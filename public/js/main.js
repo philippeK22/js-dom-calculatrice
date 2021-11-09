@@ -1,4 +1,7 @@
-import {  } from "./modules/addition.js";
+import {addition  } from "./modules/addition.js";
+import { soustraction } from "./modules/soustraction.js";
+import { multiplication } from "./modules/multiplication.js";
+import { division } from "./modules/division.js";
 
 
 let buttons = Array.from(document.querySelectorAll(".boutton"));
@@ -14,33 +17,13 @@ buttons.map(boutton => {
                 ecran.innerText = "";
 
                 break;
-            case "=":
-                // const calcul = eval(ecran.textContent);
-                // ecran.textContent = calcul;
-                console.log(ecran.textContent);
-                const arrayNumbers = ecran.textContent.split(/x|-|\/|\+|\*/);
-                const arrayOperators = ecran.textContent.split(/\d+/);
-
-                arrayOperators.forEach( operator => {
-                    if (operator == "+" && arrayNumbers[1]){
-                        ecran.innerText = Number(arrayNumbers[0]) + Number(arrayNumbers[1]);
-                    }
-                    else if (operator == "-" && arrayNumbers[1]) {
-                        ecran.innerText = Number(arrayNumbers[0]) - Number(arrayNumbers[1]);
-                        
-                    }
-                    else if (operator == "*" && arrayNumbers[1]) {
-                        ecran.innerText = Number(arrayNumbers[0]) * Number(arrayNumbers[1]);
-                        
-                    }
-                    else if (operator == "/" && arrayNumbers[1]) {
-                        ecran.innerText = Number(arrayNumbers[0]) / Number(arrayNumbers[1]);
-                        
-                    }
-                    
-                } )
-                break;
-
+                case "=":
+                    addition();
+                    soustraction();
+                    multiplication();
+                    division();
+                    break;
+            
             default:
                 ecran.innerText += e.target.innerText;
                 ecran.style.color = "white"
@@ -51,9 +34,9 @@ buttons.map(boutton => {
 
     })
     
-    window.addEventListener('error',(e)=>{
-        alert('une erreur est survenue dans votre calcule:' + e.message);
-    });
+    // window.addEventListener('error',(e)=>{
+    //     alert('une erreur est survenue dans votre calcule:' + e.message);
+    // });
             
 })
 
