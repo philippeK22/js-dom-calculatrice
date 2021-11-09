@@ -1,3 +1,6 @@
+import {  } from "./modules/addition.js";
+
+
 let buttons = Array.from(document.querySelectorAll(".boutton"));
 console.log(buttons);
 let ecran = document.querySelector("#ecran");
@@ -15,7 +18,27 @@ buttons.map(boutton => {
                 // const calcul = eval(ecran.textContent);
                 // ecran.textContent = calcul;
                 console.log(ecran.textContent);
+                const arrayNumbers = ecran.textContent.split(/x|-|\/|\+|\*/);
+                const arrayOperators = ecran.textContent.split(/\d+/);
 
+                arrayOperators.forEach( operator => {
+                    if (operator == "+" && arrayNumbers[1]){
+                        ecran.innerText = Number(arrayNumbers[0]) + Number(arrayNumbers[1]);
+                    }
+                    else if (operator == "-" && arrayNumbers[1]) {
+                        ecran.innerText = Number(arrayNumbers[0]) - Number(arrayNumbers[1]);
+                        
+                    }
+                    else if (operator == "*" && arrayNumbers[1]) {
+                        ecran.innerText = Number(arrayNumbers[0]) * Number(arrayNumbers[1]);
+                        
+                    }
+                    else if (operator == "/" && arrayNumbers[1]) {
+                        ecran.innerText = Number(arrayNumbers[0]) / Number(arrayNumbers[1]);
+                        
+                    }
+                    
+                } )
                 break;
 
             default:
@@ -23,41 +46,20 @@ buttons.map(boutton => {
                 ecran.style.color = "white"
 
                 break;
+
         }
 
     })
-
+    
+    window.addEventListener('error',(e)=>{
+        alert('une erreur est survenue dans votre calcule:' + e.message);
+    });
+            
 })
 
 
-let operator = ["+", "-", "*", "/"];
-let operatorFound;
-operator.forEach(el => {
-    el.indexOf([operator]);
-
-    switch (operator) {
-        case "+":
-            ecran
 
 
-            break;
-        case "-":
-
-            break;
-        case "*":
-
-            break;
-        case "/":
-
-            break;
-        
 
 
-        default:
-            break;
-    }
 
-});
-// let a = ecran.addEventListener("click",()=>{
-//     ecran.innerText = operator;    
-// })
